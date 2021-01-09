@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+	<title>CrowndFoundLamparanApp</title>
+	 <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" href="style/styleCss.css"/>
+</head>
+<body>
+	
+	<header>
+		<nav class="menu">
+		    <div class="nav-wrapper">
+		      <a href="#" class="brand-logo">Lista de Organizacoes</a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		        <li><a href="/RegistarOrganizacao" class="waves-effect waves-light btn"><i class="material-icons left">add_circle_outline</i>Registar Organizacao</a></li>
+		      </ul>
+		    </div>
+		</nav>
+	
+	</header>
+	<table class="container">
+		<thead>
+			<tr>
+				<th>Nome</th>
+				<th>NIF</th>
+				<th>Telefone</th>
+				<th>Telemovel</th>
+				<th>Apagar</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="organizacao : ${organizacoes}">
+				<td><a th:href="${(#mvc.url('EC#detalhesOranizacao').arg(0, Organizacao.codigo)).build()}"><span th:text="${Organizacao.nome}"></span></a></td>
+				<td><span th:text="${organizacao.nIF}"></span></td>
+				<td><span th:text="${organizacao.telefone}"></span></td>
+				<td><span th:text="${evento.telemovel}"></span></td>
+				<td><a class="waves-effect waves-light btn-small" th:href="${(#mvc.url('EC#apagarOrganizacao').arg(0, organizacao.codigo)).build()}"><i class="material-icons left">delete</i></a></td>
+			</tr>
+		</tbody>
+	
+	</table>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+
+</body>
+
+
+</html>
