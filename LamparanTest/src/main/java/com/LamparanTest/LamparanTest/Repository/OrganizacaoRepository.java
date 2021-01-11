@@ -6,5 +6,5 @@ import com.LamparanTest.LamparanTest.Entidade.Organizacao;
 
 
 public interface OrganizacaoRepository  extends CrudRepository<Organizacao, String>{
-	//Organizacao findByCodigo(long codigo);
+	Organizacao findByCodigo(long codigo);
 }

@@ -33,16 +33,16 @@ public class Responsavel {
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-	public String getNomeConvidado() {
+	public String getNomeResponsavel() {
 		return nomeResponsavel;
 	}
-	public void setNomeConvidado(String nomeResponsavel) {
+	public void setNomeResponsavel(String nomeResponsavel) {
 		this.nomeResponsavel = nomeResponsavel;
 	}
-	public Organizacao getEvento() {
+	public Organizacao getOrganizacao() {
 		return organizacao;
 	}
-	public void setEvento(Organizacao organizacao) {
+	public void setOrganizacao(Organizacao organizacao) {
 		this.organizacao = organizacao;
 	}
 	

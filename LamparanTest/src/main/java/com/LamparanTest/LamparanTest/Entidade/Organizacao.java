@@ -28,8 +28,8 @@ public class Organizacao implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long Id;
+	@GeneratedValue(strategy= GenerationType.AUTO)
+	private long codigo;
 	
 	private String nome;
 	//private Endereco endereco;
@@ -86,19 +86,16 @@ public class Organizacao implements Serializable {
 		return dataCriacao;
 	}*/
 
-	public long getID() {
-		return Id;
+	public long getCodigo() {
+		return codigo;
 	}
 	@OneToMany
 	private List<Responsavel> responsaveis;
 	
-	public long getCodigo() {
 	
-		return 0;
-	}
 @Override
 	public String toString() {
-		return "Organizacao [Id=" + Id + ", nome=" + nome + ", endereco=" + ", nIF=" + nIF + ", telefone="
+		return "Organizacao [Id=" + codigo + ", nome=" + nome + ", endereco=" + ", nIF=" + nIF + ", telefone="
 				+ telefone + ", Telemovel=" + Telemovel + ", dataCriancao=" + "]";
 	}
 	

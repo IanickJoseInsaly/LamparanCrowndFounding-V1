@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.LamparanTest.LamparanTest.Entidade.Organizacao;
 import com.LamparanTest.LamparanTest.Entidade.Responsavel;
 import com.LamparanTest.LamparanTest.Repository.OrganizacaoRepository;
+import com.LamparanTest.LamparanTest.Repository.ResponsavelRepository;
 
 @Controller
 public class RegisterOrganizationController {
@@ -40,7 +41,7 @@ public class RegisterOrganizationController {
 		attributes.addFlashAttribute("mensagem", "organizacao registado com sucesso!");
 		return "redirect:/RegisterOrganization";
 	}
-/*
+
 	@Autowired
 	private ResponsavelRepository rr;
 
@@ -58,16 +59,16 @@ public class RegisterOrganizationController {
 		ModelAndView mv = new ModelAndView("organizacao/detalhesOrganizacao");
 		mv.addObject("organizacao", organizacao);
 
-		Iterable<Responsavel> responsaveis = rr.findByEvento(organizacao);
+		Iterable<Responsavel> responsaveis = rr.findByOrganizacao(organizacao);
 		mv.addObject("responsaveis", responsaveis);
 
 		return mv;
 	}
 
 	@RequestMapping("/apagarOranizacao")
-	public String deletarEvento(long codigo) {
-		Organizacao evento = or.findByCodigo(codigo);
-		or.delete(evento);
+	public String apagarOranizacao(long codigo) {
+		Organizacao organizacao = or.findByCodigo(codigo);
+		or.delete(organizacao);
 		return "redirect:/organizacao";
 	}
 
@@ -79,7 +80,7 @@ public class RegisterOrganizationController {
 			return "redirect:/{codigo}";
 		}
 		Organizacao organizacao = or.findByCodigo(codigo);
-		responsavel.setEvento(organizacao);
+		responsavel.setOrganizacao(organizacao);
 		rr.save(responsavel);
 		attributes.addFlashAttribute("mensagem", "Responsavel adicionado com sucesso!");
 		return "redirect:/{codigo}";
@@ -90,10 +91,10 @@ public class RegisterOrganizationController {
 		Responsavel responsavel = rr.findByRg(rg);
 		rr.delete(responsavel);
 
-		Organizacao organizacao = responsavel.getEvento();
+		Organizacao organizacao = responsavel.getOrganizacao();
 		long codigoLong = organizacao.getCodigo();
 		String codigo = "" + codigoLong;
 		return "redirect:/" + codigo;
 	}
-*/
+
 }
